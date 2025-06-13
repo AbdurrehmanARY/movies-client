@@ -41,6 +41,7 @@ export const loginUser = createAsyncThunk(
   "/auth/login",
 
   async (formData) => {
+    console.log('formData',formData)
    try{
  const response = await axios.post(
       "https://movies-client-tau.vercel.app/api/v1/auth/login",
