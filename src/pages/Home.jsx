@@ -1,7 +1,3 @@
-
-// import { useEffect, useState } from 'react'
-
-
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -14,43 +10,19 @@ import PaginationComp from '@/component/PaginationComp'
 
 
 function Home() {
+   const dispatch=useDispatch()
   const navigate=useNavigate()
        const [page, setPage] = useState(1);
-
-
-   const dispatch=useDispatch()
    const {listOfMovies,totalPages}=useSelector((state)=>state.movies)
- console.log(listOfMovies,"movies")
+ 
 useEffect(() => {
   dispatch(getAllMovies(page))
 }, [dispatch, page])
 
    const handleLogout = () => {
     dispatch(logoutUser())
-    // router.push("/signin")
   }
 
-  // const handleCreateMovie = () => {
-  //   // router.push("/create")
-  // }
-
-  // const data=useSelector((state)=>state.movies)
-  //  console.log("data full in selector",data)
-
-  //  useEffect(()=>{
-  //   dispatch(getAllMovies(page))
-  //  },[dispatch,page])
-
-
-
-
- 
-
-
-
-  const handleEditMovie = (id) => {
-    // router.push(`/edit/${id}`)
-  }
 
   return (
 
@@ -130,22 +102,9 @@ useEffect(() => {
       </div>
       }
 
-      
-
-
-   
     </div>
-
-
-</>
-       
-        
-        
+</>       
   )
 }
-
 export default Home
 
-// page={page}
-//   setPage={setPage}
-//   totalPages={totalPages}
