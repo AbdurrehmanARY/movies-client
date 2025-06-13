@@ -16,7 +16,9 @@ export const registerUser = createAsyncThunk(
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/auth/register",
+        // "https://movies-client-tau.vercel.app/api/v1/auth/register"
+        "https://movies-client-tau.vercel.app/api/v1/auth/register"
+        ,
         formData,
         { withCredentials: true }
       );
@@ -41,7 +43,7 @@ export const loginUser = createAsyncThunk(
   async (formData) => {
    try{
  const response = await axios.post(
-      "http://localhost:8000/api/v1/auth/login",
+      "https://movies-client-tau.vercel.app/api/v1/auth/login",
       formData,
       {
         withCredentials: true,
@@ -66,7 +68,7 @@ export const logoutUser = createAsyncThunk(
   
     try{
       const response = await axios.post(
-      "http://localhost:8000/api/v1/auth/logout",
+      "https://movies-client-tau.vercel.app/api/v1/auth/logout",
      
       {},
       {
@@ -88,7 +90,7 @@ export const myProfile = createAsyncThunk(
   async () => {
     try{
       const response = await axios.get(
-        "http://localhost:8000/api/v1/auth/my-profile",
+        "https://movies-client-tau.vercel.app/api/v1/auth/my-profile",
         { withCredentials: true }
       );
       return response.data; // <-- Only return the serializable data
