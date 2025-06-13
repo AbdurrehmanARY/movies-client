@@ -16,7 +16,7 @@ function Login() {
   const {email,password}=user
   const formData={email,password}
   dispatch(loginUser(formData)).then((res)=>{
-    if(res.payload.success){
+    if(res.payload?.success){
       return navigate('/')
       
     }
@@ -70,9 +70,9 @@ function Login() {
                 // onCheckedChange={(checked) => setRememberMe(checked)}
                 className="border-teal-400 data-[state=checked]:bg-teal-500"
               /> */}
-              <label htmlFor="remember" className="text-teal-200 text-sm">
+              {/* <label htmlFor="remember" className="text-teal-200 text-sm">
                 Remember me
-              </label>
+              </label> */}
             </div>
 
             <Button
