@@ -44,7 +44,7 @@ export const loginUser = createAsyncThunk(
     console.log('formData',formData)
    try{
  const response = await axios.post(
-      "https://movies-server-tau.vercel.app/v1/auth/login",
+      "https://movies-server-tau.vercel.app/api/v1/auth/login",
       formData,
       {
         withCredentials: true,
