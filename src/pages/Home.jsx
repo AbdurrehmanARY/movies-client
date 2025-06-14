@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '@/store/authSlice'
 import { getAllMovies } from '@/store/moviesSlice'
 import PaginationComp from '@/component/PaginationComp'
+import { toast } from 'sonner'
 
 
 function Home() {
@@ -20,7 +21,13 @@ useEffect(() => {
 }, [dispatch, page])
 
    const handleLogout = () => {
-    dispatch(logoutUser())
+    dispatch(logoutUser()).then((res)=>{
+      if(res.payload.success){
+        toast.success(res.payload.message)
+        navigate('/auth/login')
+
+      }
+    })
   }
 
 
@@ -37,7 +44,7 @@ useEffect(() => {
         </svg>
       </div> */}
 
-      {listOfMovies.length >0 ? 
+      {listOfMovies &&  listOfMovies.length >0 ? 
       <div className="container mx-auto px-4 py-8 ">
         {/* Header */}
         <div className="flex items-center justify-between mb-12">

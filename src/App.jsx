@@ -17,14 +17,18 @@ function App() {
  
     
 useEffect(()=>{
-  dispatch(myProfile()).then((res)=>console.log("res",res.payload?.user))
+  dispatch(myProfile()).then((res)=>console.log("res",res))
 },[dispatch,isAuthenticated])
   return (
     <Router>
       <Routes>
         <Route path="/auth">
           <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={
+            <ProtectedRoute>
+            <Login />
+            </ProtectedRoute>
+            } />
         </Route>
        
           <Route path="/"   element={

@@ -39,7 +39,7 @@ const handleImageUpload=async(e)=>{
     
     try {
       setUploading(true)
-      const response = await axios.post(`http://localhost:8000/api/v1/movies/upload`, formData, {
+      const response = await axios.post(`https://movies-server-tau.vercel.app/api/v1/movies/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Set the correct content type
         },
@@ -87,11 +87,7 @@ const {title,date}=movie
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-800 to-teal-900 relative overflow-hidden">
       {/* Decorative wave at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-teal-700/30 to-transparent">
-        <svg className="absolute bottom-0 w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="rgba(45, 212, 191, 0.1)" />
-        </svg>
-      </div>
+     
 
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-white mb-12">Edit</h1>

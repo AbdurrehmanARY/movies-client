@@ -11,7 +11,7 @@ const initialState = {
     "/admin/image",
     async (image) => {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/admin/upload`,
+        `https://movies-server-tau.vercel.app/api/v1/movies/upload`,
         { image }
       );
       return response.data;
@@ -24,7 +24,7 @@ export const addMovie = createAsyncThunk(
   "/movie/add",
   async (formData) => {
     const response = await axios.post(
-      `http://localhost:8000/api/v1/movies/add`,
+      `https://movies-server-tau.vercel.app/api/v1/movies/add`,
       
       formData, // Send formData directly
       {
@@ -43,12 +43,9 @@ return  response.data
 export const editMovie = createAsyncThunk(
   "/movie/edit",
   async ({ id,formData }) => {
-    console.log("id",id)
-    
-    console.log("formData",formData)
 
     const result = await axios.put(
-      `http://localhost:8000/api/v1/movies/edit/${id}`,
+      `https://movies-server-tau.vercel.app/api/v1/movies/edit/${id}`,
       formData,
       {
         headers: {
@@ -56,31 +53,12 @@ export const editMovie = createAsyncThunk(
         },
       }
     );
-    console.log(result.data)
     return result.data;
   }
 );
 
 
 
-// delete product 
-
-// export const deleteProduct = createAsyncThunk(
-//   "/product/delete",
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       console.log(id);
-//       const response = await axios.delete(
-//         `http://localhost:5000/api/v1/admin/delete/${id}`
-//       );
-//       const data = response.data;
-//       return data;
-//     } catch (error) {
-//       console.error("Error deleting product:", error);
-//       return rejectWithValue(error.response?.data || "Something went wrong");
-//     }
-//   }
-// );
 
 
 
@@ -90,23 +68,12 @@ export const getAllMovies = createAsyncThunk(
   "/products/getProduct",
   async (page) => {
     const result = await axios.get(
-      `http://localhost:8000/api/v1/movies/all-movies/?page=${page}`
+      `https://movies-server-tau.vercel.app/api/v1/movies/all-movies/?page=${page}`
     );
     return result.data;
   }
 );
 
-// export const getProductDetail = createAsyncThunk(
-//   "/products/getSingleProduct",
-//   async (id) => {
-//     // console.log("id in slice",id)
-//     const result = await axios.get(
-//       `http://localhost:5000/api/v1/admin/single/${id}`
-//     );
-// // console.log(result)
-//     return result.data;
-//   }
-// );
 
 
 

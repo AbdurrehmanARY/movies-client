@@ -4,6 +4,7 @@ import { loginUser } from '@/store/authSlice'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 function Login() {
    const [user,setUser]=useState({email:"",password:""})
    const dispatch=useDispatch()
@@ -17,6 +18,7 @@ function Login() {
   const formData={email,password}
   dispatch(loginUser(formData)).then((res)=>{
     if(res.payload?.success){
+      toast.success(res.payload?.message)
       return navigate('/')
       
     }

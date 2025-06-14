@@ -41,16 +41,14 @@ export const loginUser = createAsyncThunk(
   "/auth/login",
 
   async (formData) => {
-    console.log('formData',formData)
    try{
  const response = await axios.post(
-      "http://localhost:8000/api/v1/auth/login",
+      "https://movies-server-tau.vercel.app/api/v1/auth/login",
       formData,
       {
         withCredentials: true,
       }
     );
-
     return response.data;
 
    }
@@ -69,7 +67,7 @@ export const logoutUser = createAsyncThunk(
   
     try{
       const response = await axios.post(
-      "http://localhost:8000/api/v1/auth/logout",
+      "https://movies-server-tau.vercel.app/api/v1/auth/logout",
      
       {},
       {
@@ -91,13 +89,12 @@ export const myProfile = createAsyncThunk(
   async () => {
     try{
       const response = await axios.get(
-        "http://localhost:8000/api/v1/auth/my-profile",
+        "https://movies-server-tau.vercel.app/api/v1/auth/my-profile",
         { withCredentials: true }
       );
-      return response.data; // <-- Only return the serializable data
+      return response.data; 
     }
     catch(error){
-      // Optionally, return a serializable error object
       return {
         success: false,
         message: error?.response?.data?.message || "Error fetching profile"
